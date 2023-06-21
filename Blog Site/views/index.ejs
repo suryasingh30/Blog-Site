@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minimalistic Blog</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/compose">Compose</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Welcome to the Minimalistic Blog</h1>
+    <p>logged in as <%= ussrname %> </p>
+  </header>
+
+  <div class="container">
+    <h1><%= kindOfDay %></h1>
+    
+    <p>
+      <h2>Introduction</h2>
+      <%= startContent %>
+    </p>
+
+    <p>
+      <ol>
+        <% for(var i=0; i<blogsPost.length; i++){ %>
+            <li>
+              <h3>
+                <a href="/<%= blogsPost[i].ContentTitle %>"><label for="blog <%= i %>"> <%= blogsPost[i].ContentTitle %></label></a>
+                <p> <%= blogsPost[i].ContentBody.substring(0, 10) + " ..." %> </p>
+              </h3>
+            </li>
+      <%  } %>
+      </ol>
+    </p>
+
+  </div>
+
+  <footer>
+    <h3>jai siya Ram - All rights are reserved</h3>
+    <script>
+      function removeForm() {
+        // Get the form element
+        var form = document.getElementById('myForm');
+  
+        // Hide the form by setting its display property to 'none'
+        form.style.display = 'none';
+      }
+    </script>
+    <form action="/" method="post" id="myForm" onsubmit="removeForm();">
+      <!-- <label for="inputField">Input:</label> -->
+      <input type="text" id="inputField" name="user" placeholder="your name" autocomplete="off" required>
+      <button type="submit" name="submit">+</button>
+    </form>
+  </footer>
+</body>
+</html>
